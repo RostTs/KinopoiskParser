@@ -16,7 +16,7 @@ include  "models/genres.php";
   // Set cookie with genres
     if(isset($_COOKIE[$cookiename])){
       $AllGenres = json_decode(gzuncompress($_COOKIE[$cookiename])); 
-    } else {
+    } elseif($AllGenres == NULL) {
       header("Location: api/genres/select.php");   
       $genres = $_POST['genres'];
       setcookie($cookiename, gzcompress($genres),time() + (86400 * 30) , "/");
